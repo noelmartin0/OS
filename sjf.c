@@ -57,7 +57,6 @@ void main()
             {
                 min = j;
                 cmp = cmp+p[j].bt;
-                printf("\nWORKING");
             }
         }
         swap(&p[i],&p[min]);
@@ -65,6 +64,7 @@ void main()
          p[k].wt = 0;
          p[k].tat = p[k].ct-p[k].at;
          p[k].wt = p[k].tat-p[k].bt;
+         cmp>=p[k].at;
          ttat += p[k].tat;
          twt += p[k].wt;
          k++;

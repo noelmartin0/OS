@@ -39,40 +39,39 @@ void main()
         swap(&p[i],&p[min]);
     }
     cmp = p[0].bt;
-    for(int i = 0; i<n; i++)
+     if(k == 0)
+        {
+         p[k].ct = p[k].bt;
+         p[k].wt = 0;
+         p[k].tat = p[k].ct-p[k].at;
+         ttat = p[k].tat;
+         twt = p[k].wt;
+         k++;
+        }
+    for(int i = 1; i<n; i++)
     {
         int min = i;
         for(int j=i+1;j<n;j++)
         {
-            if(p[min].priority>p[j].priority&&(cmp>p[j].at))
+            if(p[min].priority>p[j].priority&&(cmp>=p[j].at))
             {
                 min = j;
                 cmp = cmp+p[j].bt;
-                printf("\nWORKING");
             }
         }
         swap(&p[i],&p[min]);
-        if(k == 0)
-        {
-         p[k].ct = p[k].bt;
-         p[k].wt = 0;
-         p[k].tat = p[k].ct;
-         ttat = p[k].tat;
-         twt = p[k].wt;
-        }
-        else
-        {
          p[k].ct = p[k-1].ct+p[k].bt;
-         p[k].wt = p[k-1].ct;
-         p[k].tat = p[k].ct;
+         p[k].wt = 0;
+         p[k].tat = p[k].ct-p[k].at;
+         p[k].wt = p[k].tat-p[k].bt;
+         cmp = cmp+p[k].bt;
          ttat += p[k].tat;
          twt += p[k].wt;
-        }
          k++;
     }
-     printf("\nPID\tAT\tBT\tPRI\n");
+     printf("\nPID\tAT\tBT\tPRI\tTAT\tWT\n");
     for(int i = 0; i<n; i++)
-    printf("%d\t%d\t%d\t%d\n",p[i].pid,p[i].at,p[i].bt,p[i].priority);
+    printf("%d\t%d\t%d\t%d\t%d\t%d\n",p[i].pid,p[i].at,p[i].bt,p[i].priority,p[i].tat,p[i].wt);
     printf("\nAverage Waiting Time = %f\nAverage Turn Around Time = %f\n",(twt/n),(ttat/n));
     for(int i = 0; i<(n*6)-3; i++)
         str[i] = '-';
