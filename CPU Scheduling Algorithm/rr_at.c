@@ -3,7 +3,7 @@ struct process
 {
        int pid,at,bt,wt,tat,rem_bt;
 }p[100];
-void sortart(struct process p[],int n)
+void sort_at(struct process p[],int n)
 {
        int i,j;
        struct process temp;
@@ -36,8 +36,8 @@ int main()
               p[i].pid = i;
               p[i].rem_bt = p[i].bt;
        }
-       sortart(p,n);
-       printf("\nEnter Quantum Number : ");
+       sort_at(p,n);
+       printf("\nEnter Time Quanta : ");
        scanf("%d",&tq);
        printf("\nGANTT CHART\n***********\n");
        for(int i = 0; i<(n*22)-3; i++)
@@ -66,9 +66,9 @@ int main()
               {
                      remain--;
                      p[i].tat = time-p[i].at;
-                     p[i].wt = time-p[i].at-p[i].bt;
-                     avgwt = avgwt + time-p[i].at-p[i].bt;
-                     avgtt = avgtt + time-p[i].at;
+                     p[i].wt = p[i].tat-p[i].bt;
+                     avgwt = avgwt + p[i].wt;
+                     avgtt = avgtt + p[i].tat;
                      flag=0;
               }
               if(i==n-1)
@@ -80,7 +80,6 @@ int main()
        }
        gt[k++]=-1;
        printf("\n%s\n",str);
-       if(gt[0]== 0)
        printf("%d    %d",gt[0],gt[1]);
        for(i=2;gt[i]!=-1;i++)
        {
