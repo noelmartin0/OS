@@ -33,7 +33,7 @@ void main()
             break;
         }
     }
-   /* if(head<(199-head))
+    if(head<(199-head))
     {
         for(int i=k; i>=0; i--,p++)
             traversed[p]=tracks[i];
@@ -41,14 +41,14 @@ void main()
         for(int i=n-2; i>k; i--,p++)
             traversed[p]=tracks[i];
     }
-    else*/
-    //{
+    else
+    {
         for(int i=k; i<n; i++,p++)
             traversed[p]=tracks[i];
         traversed[p++]=tracks[0];
         for(int i=1; i<k; i++,p++)
             traversed[p]=tracks[i];
-   // }
+    }
     for(int i = 0; i<p; i++)
         printf("%d => ",traversed[i]);
     for(int j = 0; j<p-1; j++)
