@@ -12,7 +12,7 @@ struct process
    int allocblock;
 }p[10];
 int pn,bn;
-void display(int pn) //To Display the content
+void display() //To Display the content
 {
    printf("Pno\tPsize\tBno\tBsize\tWastage\n");
    for(int i=1;i<=pn;i++)
@@ -71,7 +71,7 @@ void main()
 
    check();
    printf("\nFirst Fit\n");
-   display(pn);
+   display();
 
    //BEST FIT
 
@@ -90,7 +90,7 @@ void main()
    }
    check();
    printf("\nBest fit\n");
-   display(pn);
+   display();
 
    //WORST FIT
 
@@ -109,5 +109,5 @@ void main()
    }
    check();
    printf("\nWorst fit\n");
-   display(pn);
+   display();
 }
