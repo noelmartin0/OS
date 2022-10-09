@@ -14,15 +14,17 @@ void producer(int *pro)
 {
     int item;
     for(int i = 0; i< MAXITEMS; i++)
-    item = rand();
+    {
+    item = rand()%100;
     sem_wait(&empty);
     pthread_mutex_lock(&mutex);
     buff[in] = item;
-    printf("\nProducer %d produces  %d",*((int *)pro),in);
+    printf("\nProducer %d produces  %d at %d",*((int *)pro),buff[in],in);
     sleep(1);
     in = (in%BUFFSIZE)+1;
     pthread_mutex_unlock(&mutex);
     sem_post(&full);
+    }
 }
 void consumer(int *con)
 {
@@ -32,7 +34,7 @@ void consumer(int *con)
         item = buff[out];
         sem_wait(&full);
         pthread_mutex_lock(&mutex);
-        printf("\nConsumer %d consumes  %d",*((int *)con),out);
+        printf("\nConsumer %d consumes  %d from %d",*((int *)con),item,out);
         sleep(1);
         out = (out%BUFFSIZE)+1;
         pthread_mutex_unlock(&mutex);
